@@ -14,8 +14,8 @@ script_dir="$(dirname ${BASH_SOURCE[0]})"
 
 autoreconf -i "${script_dir}"
 
-OPTS="-g -lredis++ -lhiredis -O0  -Wall"
-: "${LIBURING_DIR:=/root/git/liburing}" #replace with your own liburing path
+OPTS="-g -lredis++ -L/home/guy/redis-plus-plus/build -Wl,-rpath=/home/guy/redis-plus-plus/build -lhiredis -L/usr/local/lib -Wl,-rpath=/usr/local/lib -O0  -Wall"
+: "${LIBURING_DIR:=/home/guy/liburing}" #replace with your own liburing path
 PKG_CONFIG_PATH=${LIBURING_DIR} \
 ${script_dir}/configure \
   --enable-gcc-warnings $PARAM \

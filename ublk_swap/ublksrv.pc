@@ -1,0 +1,11 @@
+prefix=/usr/local
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include
+
+Name: ublksrv
+Version: 0.unknown
+Description: ublk server library and headers
+Requires: liburing
+Cflags:
+Libs: -lublksrv

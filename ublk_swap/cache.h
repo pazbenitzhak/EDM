@@ -8,9 +8,10 @@
 #include <sw/redis++/redis++.h>
 using namespace sw::redis;
 
+
 class ThreadSafeCache {
 public:
-    ThreadSafeCache(Redis* redis) : redis(redis), workloadThreshold(8192), isClearingCache(false) {}
+    ThreadSafeCache(RedisCluster* redis) : redis(redis), workloadThreshold(8192), isClearingCache(false) {}
 
     void addToCache(std::string key, std::string value) {
         std::unique_lock<std::mutex> lock(cacheMutex);
@@ -82,7 +83,7 @@ private:
 
     std::unordered_map<std::string, std::string> cache;
     std::mutex cacheMutex;
-    Redis* redis;
+    RedisCluster* redis;
     std::condition_variable cacheCondition;
     const size_t workloadThreshold;
     std::atomic<bool> isClearingCache;

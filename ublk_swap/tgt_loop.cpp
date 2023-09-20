@@ -16,7 +16,7 @@
 #define PAGE_SIZE 4096
 using namespace sw::redis;
 
-Redis* redis = nullptr;
+RedisCluster* redis = nullptr;
 
 ThreadSafeCache* redis_staging = nullptr;
 
@@ -129,7 +129,7 @@ static int loop_init_tgt(struct ublksrv_dev *dev, int type, int argc, char
 	struct stat st;
 	int fd, opt;
 	char *file = NULL;
-        char *redis_addr = NULL;  // New variable to store the Redis address
+    char *redis_addr = NULL;  // New variable to store the Redis address
 	int jbuf_size;
 	char *jbuf;
 	struct ublksrv_tgt_base_json tgt_json = {
@@ -174,7 +174,7 @@ static int loop_init_tgt(struct ublksrv_dev *dev, int type, int argc, char
 	if (!redis_addr){
 		return -1;
 	}
-	redis = new Redis(redis_addr);
+	redis = new RedisCluster(redis_addr);
 	if (redis == nullptr) { 
 		return -1;
 	}
