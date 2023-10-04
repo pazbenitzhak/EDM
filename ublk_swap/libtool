@@ -1,6 +1,6 @@
 #! /bin/sh
 # Generated automatically by config.status (ublksrv) 0.unknown
-# Libtool was configured on host ibm-p8-kvm-03-guest-02.virt.pnr.lab.eng.rdu2.redhat.com:
+# Libtool was configured on host fedora:
 # NOTE: Changes made to this file will be lost: look at ltmain.sh.
 
 # Provide generalized library-building support services.

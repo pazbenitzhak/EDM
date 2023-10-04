@@ -1,6 +1,8 @@
 {
     "files.associations": {
         "condition_variable": "cpp",
-        "thread": "cpp"
+        "thread": "cpp",
+        "mutex": "cpp",
+        "unordered_map": "cpp"
     }
 }

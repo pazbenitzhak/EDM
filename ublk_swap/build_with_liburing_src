@@ -15,6 +15,7 @@ script_dir="$(dirname ${BASH_SOURCE[0]})"
 autoreconf -i "${script_dir}"
 
 OPTS="-g -lredis++ -L/home/guy/redis-plus-plus/build -Wl,-rpath=/home/guy/redis-plus-plus/build -lhiredis -L/usr/local/lib -Wl,-rpath=/usr/local/lib -O0  -Wall"
+#instructions: replace the paths with those whichj include the libraries' .so files 
 : "${LIBURING_DIR:=/home/guy/liburing}" #replace with your own liburing path
 PKG_CONFIG_PATH=${LIBURING_DIR} \
 ${script_dir}/configure \
