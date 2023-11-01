@@ -125,7 +125,7 @@ static int loop_init_tgt(struct ublksrv_dev *dev, int type, int argc, char
 	struct stat st;
 	int fd, opt;
 	char *file = NULL;
-    char *redis_addr = NULL;  // New variable to store the Redis address
+	char *redis_addr = NULL;  // New variable to store the Redis address
 	int jbuf_size;
 	char *jbuf;
 	struct ublksrv_tgt_base_json tgt_json = {
@@ -155,9 +155,9 @@ static int loop_init_tgt(struct ublksrv_dev *dev, int type, int argc, char
 
 	    while ((opt = getopt_long(argc, argv, "-:f:r:", lo_longopts, NULL)) != -1) {
 		switch (opt) {
-		case 'f':
-			file = strdup(optarg);
-			break;
+			case 'f':
+					file = strdup(optarg);
+					break;
 		
 	        case 'r':
 	                redis_addr = strdup(optarg);
@@ -358,6 +358,7 @@ static co_io_job __loop_handle_io_async(const struct ublksrv_queue *q,
 						std::string value = std::string(static_cast<const char*>((void*)(iod->addr +(i* PAGE_SIZE))),PAGE_SIZE);
 						redis->set(key,value);
 					}
+				ublksrv_complete_io(q, tag, io->tgt_io_cqe->res);
 			}
 			catch (const std::exception& e) { 
 				//ublk_dbg(UBLK_DBG_IO, "failed to SET key-value to redis");
